@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to polls</title>
+<style type="text/css">
+
+body {
+			background: #DBDBDB;
+		}
+</style>
+</head>
+<body>
+{% if latest_question_list %}
+	<ol>
+		{% for question in latest_question_list %}
+		<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+		{% endfor %}
+	</ol>
+{% else %}
+<p> Sorry, there are no polls at this time.</p>
+
+{% endif %}
+</body>
+</html>
+

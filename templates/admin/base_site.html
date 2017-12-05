@@ -1,0 +1,15 @@
+<html>
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% comment %}
+  override admin templates { site_name|default:_('Django site admin') }
+{% endcomment %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Polls Manager</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+</html>

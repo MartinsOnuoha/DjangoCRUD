@@ -26,6 +26,7 @@ class QuestionMethodTests(TestCase):
         """
         question = Question()
         self.assertEqual(question.__str__(), question.question_text)
+        self.assertEqual(type(question.__str__()), str)
     
     
     def test_was_published_recently_with_recent_question(self):

@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Question Details</title>
-	<style type="text/css">
-		body {
-			background: #DBDBDB;
-		}
-	</style>
+  <title>Question Details</title>
+    <style type="text/css">
+	body {
+		background: #DBDBDB;
+	}
+    </style>
 </head>
 <body>
-<h2>{{ question.question_text }}</h2>
-<ul>
+  <h2>{{ question.question_text }}</h2>
+
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>
+	{% endif %}
+
+	<form action="{% url 'polls:vote' question.id %}" method="post">
+	{% csrf_token %} <!-- Cross Site Request Forgeries.  -->
 	{% for choice in question.choice_set.all %}
-	<li>{{ choice.choice_text }}</li>
+		<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+		<label for="choice{{ forloop.counter }}">
+			{{ choice.choice_text }}
+		</label><br />
 	{% endfor %}
-</ul>
+	<input id="submit" type="submit" value="Vote"/>
+	</form>
 
 </body>
 </html>

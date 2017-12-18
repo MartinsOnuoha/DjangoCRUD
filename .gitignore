@@ -4,4 +4,7 @@ db.sqlite3
 __pycache__/
 *.pyc
 *cache
-
+kdev4/*
+polls/.models.py.kate-swp
+mysite.kdev4
+.git/*
